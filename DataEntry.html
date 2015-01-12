@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+Jen Anderson
+CS 496
+Assignment 1
+Due 7/6/14
+DataEntry.html
+-->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Data Entry</title>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+</head>
+<body>
+	<h1>Register here</h1>
+	<form id="register-form" novalidate="novalidate">
+		<div class="label">Name</div><input type="text" id="name" name="name" /><br />
+		<br/><div class="label">Date of Birth</div><input id="datepicker" name="datepicker"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<br/><div id="optionSect"> 
+			<div class="label">Would you recommend this site to a friend?</div><select name="optionSect">
+				<option value="" selected="">Choose One:</option>
+				<option value="A">No! There's nothing on this page!</option>
+				<option value="B">Yes, but only to people I don't like</option>
+				<option value="C">Yes, everyone should have a favorite empty website</option>
+			</select>
+		</div>
+		<br /><div><input type="submit" name="submit" value="Submit" /></div>
+	</form>
+	<br/><br/>
+	<button id="Navigation">Return Home</button>
+	<script>
+		$('#Navigation').on('click', function() { window.location = 'NavigationPage.html'; });
+	</script>
+
+	<button id="Gallery">View the Gallery</button>
+	<script>
+		$('#Gallery').on('click', function() { window.location = 'GalleryPage.html'; });
+	</script>
+	<script>
+	$(function() 
+	{
+		$("#register-form").validate(
+		{
+			rules: 
+			{
+				name: "required",
+				datepicker: "required",
+				optionSect: "required"
+			},
+			messages: 
+			{
+				name: "Please enter your first name",
+				datepicker: "Date of birth is required",
+				optionSect: "Please choose an option"
+			},
+			submitHandler: function(form) 
+			{
+				form.submit();
+			}
+		});
+  });
+  </script>
+  <script>
+	$(function() 
+	{
+		$( "#datepicker" ).datepicker({
+				dateFormat: "mm/dd/yy",
+				changeMonth: true,
+				changeYear: true,
+				yearRange: '1900:2020'
+			});
+	});
+  </script>
+</body>
+</html>
